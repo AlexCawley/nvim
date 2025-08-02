@@ -24,24 +24,27 @@ vim.opt.incsearch = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
-vim.keymap.set('n', '<leader>pv', ':Ex<cr>')
+vim.keymap.set('n', '<leader>pv', ':Ex<CR>')
 
-vim.keymap.set('n', '<leader>j', ':split<cr>')
-vim.keymap.set('n', '<leader>l', ':vsplit<cr>')
+vim.keymap.set('n', '<leader>j', ':split<CR>')
+vim.keymap.set('n', '<leader>l', ':vsplit<CR>')
 
-vim.keymap.set('n', '<c-h>', '<c-w>h')
-vim.keymap.set('n', '<c-j>', '<c-w>j')
-vim.keymap.set('n', '<c-k>', '<c-w>k')
-vim.keymap.set('n', '<c-l>', '<c-w>l')
+vim.keymap.set('n', '<C-h>', '<C-w>h')
+vim.keymap.set('n', '<C-j>', '<C-w>j')
+vim.keymap.set('n', '<C-k>', '<C-w>k')
+vim.keymap.set('n', '<C-l>', '<C-w>l')
 
 vim.cmd [[packadd packer.nvim]]
-
-vim.cmd("colorscheme onedark")
 
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
-    use "olimorris/onedarkpro.nvim"
+    use { 
+        "olimorris/onedarkpro.nvim",
+        config = function()
+            vim.cmd("colorscheme onedark")
+        end
+    }
 
     use {
         'nvim-telescope/telescope.nvim',
@@ -87,12 +90,12 @@ return require('packer').startup(function(use)
             lspconfig.omnisharp.setup {
                 cmd = { vim.fn.stdpath("data") .. "/mason/packages/omnisharp/omnisharp" },
                 on_attach = function(client, bufnr)
-                    vim.keymap.set('n', 'gd', vim.lsp.buf.declaration)
+                    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration)
                     vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
                     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation)
                     vim.keymap.set('n', 'gr', vim.lsp.buf.references)
                     vim.keymap.set('n', '<leader>k', vim.lsp.buf.hover)
-                    vim.keymap.set('n', '<c-k>', vim.lsp.buf.signarture_help)
+                    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signarture_help)
                     vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action)
                     vim.keymap.set('v', '<leader>ca', vim.lsp.buf.range_code_action)
                     vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
