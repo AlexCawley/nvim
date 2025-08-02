@@ -36,22 +36,6 @@ vim.keymap.set('n', '<C-l>', '<C-w>l')
 
 vim.cmd [[packadd packer.nvim]]
 
-local on_attach = function(client, bufnr)
-    local bufopts = { noremap=true, silent=true, buffer=bufnr }
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-    vim.keymap.set('n', '<leader>k', vim.lsp.buf.hover, bufopts)
-    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
-    vim.keymap.set('v', '<leader>ca', vim.lsp.buf.range_code_action, bufopts)
-    vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, bufopts)
-    vim.keymap.set('n', '<leader>f', function()
-        vim.lsp.buf.format()
-    end, bufopts)
-end
-
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
@@ -150,11 +134,6 @@ return require('packer').startup(function(use)
                     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
                     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
                     vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-                    vim.keymap.set('n', '<leader>k', vim.lsp.buf.hover, bufopts)
-                    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-                    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
-                    vim.keymap.set('v', '<leader>ca', vim.lsp.buf.range_code_action, bufopts)
-                    vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, bufopts)
                     vim.keymap.set('n', '<leader>f', function()
                         vim.lsp.buf.format()
                     end, bufopts)
