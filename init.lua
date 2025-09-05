@@ -1,83 +1,37 @@
-vim.g.mapleader = ' '
+vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
+vim.g.mapleader = " "
 
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.wrap = false
-vim.opt.cursorline = true
-vim.opt.swapfile = false
-vim.opt.backup = false
-vim.opt.undofile = false
-vim.opt.signcolumn = 'yes'
-vim.opt.scrolloff = 8
+-- bootstrap lazy and all plugins
+local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
-vim.opt.expandtab = true
-vim.opt.shiftwidth = 4
-vim.opt.tabstop = 4
-vim.opt.smartindent = true
-vim.opt.autoindent = true
+if not vim.uv.fs_stat(lazypath) then
+  local repo = "https://github.com/folke/lazy.nvim.git"
+  vim.fn.system { "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath }
+end
 
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.hlsearch = true
-vim.opt.incsearch = true
+vim.opt.rtp:prepend(lazypath)
 
-vim.opt.splitbelow = true
-vim.opt.splitright = true
+local lazy_config = require "configs.lazy"
 
-vim.keymap.set('n', '<leader>pv', ':Ex<CR>')
+-- load plugins
+require("lazy").setup({
+  {
+    "NvChad/NvChad",
+    lazy = false,
+    branch = "v2.5",
+    import = "nvchad.plugins",
+  },
 
-vim.keymap.set('n', '<leader>j', ':split<CR>')
-vim.keymap.set('n', '<leader>l', ':vsplit<CR>')
+  { import = "plugins" },
+}, lazy_config)
 
-vim.keymap.set('n', '<C-h>', '<C-w>h')
-vim.keymap.set('n', '<C-j>', '<C-w>j')
-vim.keymap.set('n', '<C-k>', '<C-w>k')
-vim.keymap.set('n', '<C-l>', '<C-w>l')
+-- load theme
+dofile(vim.g.base46_cache .. "defaults")
+dofile(vim.g.base46_cache .. "statusline")
 
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+require "options"
+require "autocmds"
 
-vim.cmd [[packadd packer.nvim]]
-
-return require('packer').startup(function(use)
-    use 'wbthomason/packer.nvim'
-
-    use {
-        'olimorris/onedarkpro.nvim',
-        config = function()
-            vim.cmd('colorscheme onedark')
-        end
-    }
-
-    use {
-        'nvim-telescope/telescope.nvim',
-        tag = '0.1.5',
-        requires = { { 'nvim-lua/plenary.nvim' } },
-        config = function()
-            require('telescope').setup {
-                defaults = {
-                    layout_strategy = 'horizontal',
-                    layout_config = { prompt_position = 'top' },
-                    sorting_strategy = 'ascending',
-                    winblend = 0,
-                }
-            }
-
-            vim.keymap.set('n', '<leader>ff', require('telescope.builtin').find_files)
-            vim.keymap.set('n', '<leader>fg', require('telescope.builtin').live_grep)
-            vim.keymap.set('n', '<leader>fb', require('telescope.builtin').buffers)
-        end
-    }
-
-    use {
-        'nvim-tree/nvim-tree.lua',
-        requires = { 'nvim-tree/nvim-web-devicons' },
-        config = function()
-            require('nvim-tree').setup {
-                view = {
-                    width = 30
-                }
-            }
-        end
-    }
+vim.schedule(function()
+  require "mappings"
 end)
