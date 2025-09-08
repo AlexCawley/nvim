@@ -73,6 +73,9 @@ nvim/
 - `<leader>fb`: Find buffers
 - `<leader>ma`: Find marks
 
+### Document Formatting
+- `<leader>fm`: Format document (LSP-based formatting)
+
 ### LSP (Language Server Protocol)
 - `gd`: Go to definition
 - `gD`: Go to declaration
@@ -90,6 +93,7 @@ nvim/
 - `<leader>gl`: Git pull
 - `<leader>gb`: Git blame
 - `<leader>gd`: Git diff split
+- `<leader>gaa`: Git add all (stage all changes)
 
 ### Git Hunks (Gitsigns)
 - `]c` / `[c`: Navigate to next/previous git hunk
@@ -157,11 +161,11 @@ This configuration provides comprehensive language server support for modern web
 - **Features**: IntelliSense, code navigation, refactoring, inlay hints, code lens
 - **Installation**: Manual via `:SetupRoslyn` command
 
-#### HTML (.html, .cshtml)
+#### HTML (.html, .cshtml, .razor)
 - **Language Server**: HTML Language Server
 - **Features**: Auto-completion, syntax validation, tag matching
 - **Installation**: Automatic via mason-lspconfig
-- **Supports**: Standard HTML and ASP.NET Razor files
+- **Supports**: Standard HTML, ASP.NET Razor files, and Blazor components
 
 #### CSS (.css, .scss, .sass)
 - **Language Server**: CSS Language Server
