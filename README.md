@@ -259,9 +259,12 @@ This command will automatically detect your operating system and install:
 #### Option 2: Manual Installation
 ```bash
 # C# formatting (astyle)
-# Windows (via chocolatey): choco install astyle
-# macOS (via homebrew): brew install astyle
-# Linux (Ubuntu/Debian): sudo apt install astyle
+# Windows (via chocolatey):
+choco install astyle
+# macOS (via homebrew):
+brew install astyle
+# Linux (Ubuntu/Debian):
+sudo apt install astyle
 
 # CSS formatting (stylelint)
 npm install -g stylelint
