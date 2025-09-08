@@ -48,8 +48,8 @@ nvim/
 - **`cmp.lua`**: Completion engine configuration
 - **`which-key.lua`**: Key binding help system using [which-key.nvim](https://github.com/folke/which-key.nvim)
 - **`lualine.lua`**: Status line configuration using [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
-- **nvim-web-devicons**: File type icons for enhanced visual elements
-- **mini.icons**: Icon library for which-key and other components
+- **`nvim-web-devicons`**: File type icons for enhanced visual elements
+- **`mini.icons`**: Icon library for which-key and other components
 
 ## Key Mappings
 
@@ -166,17 +166,3 @@ chmod +x setup-roslyn.sh
 - **Code Lens**: References and test indicators
 - **Formatting**: Automatic code formatting
 
-### Troubleshooting
-
-- **Server not starting**: Check that .NET SDK is installed and in PATH
-- **No completions**: Ensure the language server is running (`:Roslyn start`)
-- **Wrong solution**: Use `:Roslyn target` to select the correct solution
-- **Performance issues**: Check the [roslyn.nvim documentation](https://github.com/seblyng/roslyn.nvim) for configuration options
-
-## Benefits of This Structure
-
-1. **Modularity**: Each component is in its own file
-2. **Maintainability**: Easy to find and modify specific configurations
-3. **Scalability**: Easy to add new plugins and configurations
-4. **Readability**: Clear separation of concerns
-5. **Reusability**: Configuration modules can be easily shared or reused
