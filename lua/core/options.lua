@@ -31,6 +31,9 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undofile = false
 
+-- Disable intro screen
+vim.opt.shortmess:append("I")
+
 -- Disable netrw
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1

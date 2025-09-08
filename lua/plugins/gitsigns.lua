@@ -1,7 +1,7 @@
 return function()
     require('gitsigns').setup({
         signs = {
-            add          = { text = '│' },
+            add          = { text = '+' },
             change       = { text = '│' },
             delete       = { text = '_' },
             topdelete    = { text = '‾' },
@@ -9,7 +9,7 @@ return function()
             untracked    = { text = '┆' },
         },
         signs_staged = {
-            add          = { text = '┃' },
+            add          = { text = '+' },
             change       = { text = '┃' },
             delete       = { text = '_' },
             topdelete    = { text = '‾' },

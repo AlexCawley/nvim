@@ -81,7 +81,7 @@ return packer.startup(function(use)
 
     -- Git integration
     use 'tpope/vim-fugitive'
-    
+
     use {
         'lewis6991/gitsigns.nvim',
         config = require('plugins.gitsigns')
