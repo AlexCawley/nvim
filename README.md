@@ -20,6 +20,7 @@ nvim/
 │       ├── telescope.lua   # Telescope fuzzy finder configuration
 │       ├── nvim-tree.lua   # File tree configuration
 │       ├── mason.lua       # LSP installer configuration
+│       ├── mason-lspconfig.lua # Automatic LSP server installation
 │       ├── lspconfig.lua   # LSP configuration
 │       ├── cmp.lua         # Completion configuration
 │       ├── which-key.lua   # Key binding help system
@@ -44,7 +45,8 @@ nvim/
 - **`telescope.lua`**: Telescope fuzzy finder setup and key mappings
 - **`nvim-tree.lua`**: File tree explorer configuration
 - **`mason.lua`**: Mason LSP installer configuration
-- **`lspconfig.lua`**: Language Server Protocol configuration
+- **`mason-lspconfig.lua`**: Automatic installation of HTML, CSS, and JSON language servers
+- **`lspconfig.lua`**: Language Server Protocol configuration for C#, HTML, CSS, and JSON
 - **`cmp.lua`**: Completion engine configuration
 - **`which-key.lua`**: Key binding help system using [which-key.nvim](https://github.com/folke/which-key.nvim)
 - **`lualine.lua`**: Status line configuration using [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
@@ -122,6 +124,41 @@ use {
 
 - **Core mappings**: Add to `lua/core/keymaps.lua`
 - **Plugin-specific mappings**: Add to the respective plugin configuration file
+
+## Language Support
+
+This configuration provides comprehensive language server support for modern web and .NET development:
+
+### Supported Languages
+
+#### C# (.cs, .csproj, .sln)
+- **Language Server**: Roslyn (via roslyn.nvim)
+- **Features**: IntelliSense, code navigation, refactoring, inlay hints, code lens
+- **Installation**: Manual via `:SetupRoslyn` command
+
+#### HTML (.html, .cshtml)
+- **Language Server**: HTML Language Server
+- **Features**: Auto-completion, syntax validation, tag matching
+- **Installation**: Automatic via mason-lspconfig
+- **Supports**: Standard HTML and ASP.NET Razor files
+
+#### CSS (.css, .scss, .sass)
+- **Language Server**: CSS Language Server  
+- **Features**: Property completion, color preview, linting
+- **Installation**: Automatic via mason-lspconfig
+
+#### JSON (.json)
+- **Language Server**: JSON Language Server with SchemaStore
+- **Features**: Schema validation, auto-completion, error detection
+- **Installation**: Automatic via mason-lspconfig
+- **Enhanced**: Includes schemas for package.json, tsconfig.json, and more
+
+### Automatic Installation
+
+The following language servers are automatically installed when you first open the relevant file types:
+- `html` - HTML Language Server
+- `cssls` - CSS Language Server
+- `jsonls` - JSON Language Server
 
 ## C# Development Setup
 

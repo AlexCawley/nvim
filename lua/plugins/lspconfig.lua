@@ -38,4 +38,29 @@ return function()
             },
         }
     })
+
+    -- HTML Language Server
+    lspconfig.html.setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
+        filetypes = { "html", "cshtml", "razor" },
+    })
+
+    -- CSS Language Server
+    lspconfig.cssls.setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
+    })
+
+    -- JSON Language Server
+    lspconfig.jsonls.setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
+        settings = {
+            json = {
+                schemas = require('schemastore').json.schemas(),
+                validate = { enable = true },
+            },
+        },
+    })
 end

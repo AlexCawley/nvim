@@ -40,6 +40,13 @@ return packer.startup(function(use)
         config = require('plugins.mason')
     }
 
+    -- Mason-lspconfig bridge for automatic server installation
+    use {
+        'williamboman/mason-lspconfig.nvim',
+        after = 'mason.nvim',
+        config = require('plugins.mason-lspconfig')
+    }
+
     -- LSP configuration
     use {
         'neovim/nvim-lspconfig',
@@ -48,6 +55,9 @@ return packer.startup(function(use)
 
     -- Roslyn (C# LSP)
     use 'seblyng/roslyn.nvim'
+
+    -- JSON schemas for better JSON support
+    use 'b0o/schemastore.nvim'
 
     -- Completion engine
     use {
