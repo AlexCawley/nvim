@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find:*)",
+      "Bash(dotnet --version)",
+      "Bash(curl:*)",
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "Bash(ls:*)",
+      "Read(//c/Users/alexc/AppData/Local/nvim-data/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

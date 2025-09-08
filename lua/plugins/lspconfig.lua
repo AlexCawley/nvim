@@ -1,32 +1,14 @@
 return function()
     local lspconfig = require('lspconfig')
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    local roslyn_setup = require('setup.roslyn')
+    local cmp_nvim_lsp = require('cmp_nvim_lsp')
+    local capabilities = cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
     local on_attach = function(client, bufnr)
-        local opts = { noremap = true, silent = true, buffer = bufnr }
-
-        -- LSP key mappings
-        vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-        vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-        vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-        vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-        vim.keymap.set('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-        vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-        vim.keymap.set('n', '<leader>f', '<cmd>lua vim.lsp.buf.format()<CR>', opts)
-
         -- Enable inlay hints
         vim.lsp.inlay_hint.enable(bufnr, true)
     end
 
-    -- Get Roslyn server path
-    local server_path = roslyn_setup.get_server_path()
-    if not server_path then
-        vim.notify('Roslyn language server not found. Run :SetupRoslyn to install it.', vim.log.levels.WARN)
-        return
-    end
-
-    -- Setup Roslyn for C# development
+    -- Setup Roslyn for C# development using Mason
     require('roslyn').setup({
         on_attach = on_attach,
         capabilities = capabilities,

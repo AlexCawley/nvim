@@ -47,14 +47,7 @@ return packer.startup(function(use)
     }
 
     -- Roslyn (C# LSP)
-    use {
-        'seblyng/roslyn.nvim',
-        config = function()
-            require('roslyn').setup({
-                -- Configuration is handled in lspconfig.lua
-            })
-        end
-    }
+    use 'seblyng/roslyn.nvim'
 
     -- Completion engine
     use {
