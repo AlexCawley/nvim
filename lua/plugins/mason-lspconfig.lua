@@ -4,6 +4,7 @@ return function()
             'html',
             'cssls',
             'jsonls',
+            'lua_ls',
         },
 
         automatic_installation = true,

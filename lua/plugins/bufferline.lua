@@ -1,5 +1,5 @@
 return function()
-    vim.opt.termguicolors = true 
+    vim.opt.termguicolors = true
     local bufferline = require('bufferline')
     bufferline.setup {
         options = {
