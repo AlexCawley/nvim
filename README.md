@@ -48,8 +48,8 @@ nvim/
 - **`cmp.lua`**: Completion engine configuration
 - **`which-key.lua`**: Key binding help system using [which-key.nvim](https://github.com/folke/which-key.nvim)
 - **`lualine.lua`**: Status line configuration using [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
-- **nvim-web-devicons**: File type icons for enhanced visual elements
-- **mini.icons**: Icon library for which-key and other components
+- **`nvim-web-devicons`**: File type icons for enhanced visual elements
+- **`mini.icons`**: Icon library for which-key and other components
 
 ## Key Mappings
 
