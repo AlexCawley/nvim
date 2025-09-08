@@ -47,6 +47,13 @@ return packer.startup(function(use)
         config = require('plugins.mason-lspconfig')
     }
 
+    -- Mason tool installer for formatters and linters
+    use {
+        'WhoIsSethDaniel/mason-tool-installer.nvim',
+        after = 'mason.nvim',
+        config = require('plugins.mason-tool-installer')
+    }
+
     -- LSP configuration
     use {
         'neovim/nvim-lspconfig',
@@ -118,5 +125,11 @@ return packer.startup(function(use)
         'akinsho/bufferline.nvim',
         requires = 'nvim-tree/nvim-web-devicons',
         config = require('plugins.bufferline')
+    }
+
+    -- Conform (formatting)
+    use {
+        'stevearc/conform.nvim',
+        config = require('plugins.conform')
     }
 end)

@@ -13,8 +13,7 @@ nvim/
 │   │   ├── options.lua         # Vim options and settings
 │   │   └── keymaps.lua         # Basic key mappings
 │   ├── setup/                  # Cross-platform setup utilities
-│   │   ├── init.lua            # Setup commands and utilities
-│   │   └── roslyn.lua          # Roslyn language server setup
+│   │   └── init.lua            # Setup commands and utilities
 │   └── plugins/                # Plugin configurations
 │       ├── init.lua            # Plugin manager and main plugin loader
 │       ├── telescope.lua       # Telescope fuzzy finder configuration
@@ -27,8 +26,6 @@ nvim/
 │       ├── gitsigns.lua        # Git integration and visual indicators
 │       ├── bufferline.lua      # Buffers as tabs setup
 │       └── lualine.lua         # Status line configuration
-├── setup-roslyn.ps1            # Windows PowerShell Roslyn setup script
-├── setup-roslyn.sh             # Linux/macOS shell Roslyn setup script
 └── plugin/                     # Packer compiled files (auto-generated)
     └── packer_compiled.lua
 ```
@@ -41,6 +38,10 @@ nvim/
 - **`options.lua`**: Contains all vim options, settings, and global variables
 - **`keymaps.lua`**: Contains basic key mappings and shortcuts
 
+### Setup Utilities (`lua/setup/`)
+
+- **`init.lua`**: Cross-platform installation utilities and setup commands
+
 ### Plugin Configuration (`lua/plugins/`)
 
 - **`init.lua`**: Main plugin configuration using packer.nvim
@@ -48,6 +49,7 @@ nvim/
 - **`nvim-tree.lua`**: File tree explorer configuration
 - **`mason.lua`**: Mason LSP installer configuration
 - **`mason-lspconfig.lua`**: Automatic installation of HTML, CSS, and JSON language servers
+- **`mason-tool-installer.lua`**: Automatic installation of formatters and tools
 - **`lspconfig.lua`**: Language Server Protocol configuration for C#, HTML, CSS, and JSON
 - **`cmp.lua`**: Completion engine configuration
 - **`which-key.lua`**: Key binding help system using [which-key.nvim](https://github.com/folke/which-key.nvim)
@@ -56,11 +58,12 @@ nvim/
 - **`nvim-web-devicons`**: File type icons for enhanced visual elements
 - **`mini.icons`**: Icon library for which-key and other components
 - **`bufferline.lua`**: Buffers as tabs
+- **`conform.lua`**: Code formatting using [conform.nvim](https://github.com/stevearc/conform.nvim)
 
 ## Key Mappings
 
 ### File Operations
-- `<leader>e`: Focus on file tree
+- `<leader>ef`: Focus on file tree
 - `<C-n>`: Toggle file tree
 
 ### Window Management
@@ -70,13 +73,19 @@ nvim/
 - `<C-x>`: Exit terminal mode
 
 ### Telescope (Fuzzy Finder)
-- `<leader>ff`: Find files
-- `<leader>fg`: Live grep
-- `<leader>fb`: Find buffers
+- `<leader>Ff`: Find files
+- `<leader>Fg`: Live grep
+- `<leader>Fb`: Find buffers
 - `<leader>ma`: Find marks
 
-### Document Formatting
-- `<leader>fm`: Format document (LSP-based formatting)
+### Code Formatting (Conform.nvim)
+- `<leader>fm`: Format current file or visual selection
+- **Supported formatters**:
+  - **Lua**: `stylua` (auto-installed via Mason)
+  - **C#**: `astyle`
+  - **JSON**: `fixjson` (auto-installed via Mason)
+  - **CSS**: `stylelint`
+  - **All files**: `codespell` (spelling correction, auto-installed) and `trim_whitespace` (cleanup)
 
 ### LSP (Language Server Protocol)
 - `gd`: Go to definition
@@ -85,7 +94,11 @@ nvim/
 - `K`: Show hover information
 - `<leader>rn`: Rename symbol
 - `<leader>ca`: Code actions
-- `<leader>f`: Format code
+
+### LSP Diagnostics
+- `<leader>d`: Show line diagnostics in floating window
+- `<leader>nd`: Go to next diagnostic
+- `<leader>pd`: Go to previous diagnostic
 
 ### Git Integration (Fugitive + Gitsigns)
 - `<leader>g`: Git menu
@@ -217,6 +230,50 @@ This configuration includes comprehensive Git support through two complementary 
 - **Staging Granularity**: Stage entire files, hunks, or individual lines
 - **Blame Integration**: See who changed what and when, with full commit info
 
+## Formatter Installation
+
+### Automatic Installation (via Mason)
+
+Most formatters are automatically installed via **mason-tool-installer.nvim**:
+
+- **stylua** (Lua formatter)
+- **fixjson** (JSON formatter) 
+- **codespell** (Spelling checker)
+
+These will be installed automatically when you run `:PackerSync` and restart Neovim.
+
+### Manual Installation Required
+
+Some formatters need manual installation as they're not available in the Mason registry:
+
+#### Option 1: Automatic Installation (Recommended)
+Use the built-in Neovim command:
+```vim
+:InstallFormatters
+```
+
+This command will automatically detect your operating system and install:
+- **astyle** (C# formatter) via chocolatey/homebrew/apt
+- **stylelint** (CSS formatter) via npm
+
+#### Option 2: Manual Installation
+```bash
+# C# formatting (astyle)
+# Windows (via chocolatey): choco install astyle
+# macOS (via homebrew): brew install astyle
+# Linux (Ubuntu/Debian): sudo apt install astyle
+
+# CSS formatting (stylelint)
+npm install -g stylelint
+```
+
+**Prerequisites**: Make sure you have the appropriate package managers installed:
+- **Windows**: Chocolatey and Node.js/npm
+- **macOS**: Homebrew and Node.js/npm  
+- **Linux**: apt (Ubuntu/Debian) and Node.js/npm
+
+**Note**: `trim_whitespace` is built into conform.nvim and requires no external installation.
+
 ## C# Development Setup
 
 This configuration includes support for C# development using the [roslyn.nvim](https://github.com/seblyng/roslyn.nvim) plugin.
@@ -232,24 +289,6 @@ This configuration includes support for C# development using the [roslyn.nvim](h
 2. **Setup Roslyn**: Run `:SetupRoslyn` in Neovim
 3. **Start Roslyn server**: Open a C# project and run `:Roslyn start`
 4. **Select solution** (if multiple): Run `:Roslyn target` to choose the correct solution
-
-#### Option 2: Manual Setup
-**Windows:**
-```powershell
-# Run in PowerShell as Administrator
-.\setup-roslyn.ps1
-```
-
-**Linux/macOS:**
-```bash
-# Make script executable and run
-chmod +x setup-roslyn.sh
-./setup-roslyn.sh
-```
-
-#### Option 3: Check Installation
-- **Check if installed**: Run `:CheckRoslyn` in Neovim
-- **Manual verification**: Check if the language server is properly installed
 
 ### Features
 
