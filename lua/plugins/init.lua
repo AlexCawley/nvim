@@ -73,11 +73,11 @@ return packer.startup(function(use)
         config = require('plugins.cmp')
     }
 
-     -- Which-key (key binding help) - temporarily disabled
-     use {
-         'folke/which-key.nvim',
-         config = require('plugins.which-key')
-     }
+    -- Which-key (key binding help)
+    use {
+        'folke/which-key.nvim',
+        config = require('plugins.which-key')
+    }
 
     -- Git integration
     use 'tpope/vim-fugitive'
@@ -111,5 +111,12 @@ return packer.startup(function(use)
         config = function()
             require('mini.icons').setup()
         end
+    }
+
+    -- Bufferline tabs
+    use {
+        'akinsho/bufferline.nvim',
+        requires = 'nvim-tree/nvim-web-devicons',
+        config = require('plugins.bufferline')
     }
 end)

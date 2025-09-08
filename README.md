@@ -6,29 +6,30 @@ This is a modular Neovim configuration organized into logical modules for better
 
 ```
 nvim/
-├── init.lua                 # Main configuration entry point
+├── init.lua                     # Main configuration entry point
 ├── lua/
-│   ├── core/               # Core Neovim configuration
-│   │   ├── init.lua        # Core configuration loader
-│   │   ├── options.lua     # Vim options and settings
-│   │   └── keymaps.lua     # Basic key mappings
-│   ├── setup/              # Cross-platform setup utilities
-│   │   ├── init.lua        # Setup commands and utilities
-│   │   └── roslyn.lua      # Roslyn language server setup
-│   └── plugins/            # Plugin configurations
-│       ├── init.lua        # Plugin manager and main plugin loader
-│       ├── telescope.lua   # Telescope fuzzy finder configuration
-│       ├── nvim-tree.lua   # File tree configuration
-│       ├── mason.lua       # LSP installer configuration
+│   ├── core/                   # Core Neovim configuration
+│   │   ├── init.lua            # Core configuration loader
+│   │   ├── options.lua         # Vim options and settings
+│   │   └── keymaps.lua         # Basic key mappings
+│   ├── setup/                  # Cross-platform setup utilities
+│   │   ├── init.lua            # Setup commands and utilities
+│   │   └── roslyn.lua          # Roslyn language server setup
+│   └── plugins/                # Plugin configurations
+│       ├── init.lua            # Plugin manager and main plugin loader
+│       ├── telescope.lua       # Telescope fuzzy finder configuration
+│       ├── nvim-tree.lua       # File tree configuration
+│       ├── mason.lua           # LSP installer configuration
 │       ├── mason-lspconfig.lua # Automatic LSP server installation
-│       ├── lspconfig.lua   # LSP configuration
-│       ├── cmp.lua         # Completion configuration
-│       ├── which-key.lua   # Key binding help system
-│       ├── gitsigns.lua    # Git integration and visual indicators
-│       └── lualine.lua     # Status line configuration
-├── setup-roslyn.ps1        # Windows PowerShell Roslyn setup script
-├── setup-roslyn.sh         # Linux/macOS shell Roslyn setup script
-└── plugin/                 # Packer compiled files (auto-generated)
+│       ├── lspconfig.lua       # LSP configuration
+│       ├── cmp.lua             # Completion configuration
+│       ├── which-key.lua       # Key binding help system
+│       ├── gitsigns.lua        # Git integration and visual indicators
+│       ├── bufferline.lua      # Buffers as tabs setup
+│       └── lualine.lua         # Status line configuration
+├── setup-roslyn.ps1            # Windows PowerShell Roslyn setup script
+├── setup-roslyn.sh             # Linux/macOS shell Roslyn setup script
+└── plugin/                     # Packer compiled files (auto-generated)
     └── packer_compiled.lua
 ```
 
@@ -54,6 +55,7 @@ nvim/
 - **`lualine.lua`**: Status line configuration using [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
 - **`nvim-web-devicons`**: File type icons for enhanced visual elements
 - **`mini.icons`**: Icon library for which-key and other components
+- **`bufferline.lua`**: Buffers as tabs
 
 ## Key Mappings
 
@@ -113,6 +115,11 @@ nvim/
 - `:Roslyn stop`: Stop the language server
 - `:Roslyn restart`: Restart the language server
 - `:Roslyn target`: Choose solution if multiple exist
+
+### Bufferline
+- `<leader>blp`: Jump to a specific buffer with one keystroke
+- `<tab>`: Cycle to the next buffer
+- `<S-tab>`: Cycle to the previous buffer
 
 ### Which-Key Help System
 - **Automatic**: Press any key combination to see available mappings
