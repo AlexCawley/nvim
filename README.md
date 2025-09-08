@@ -24,6 +24,7 @@ nvim/
 │       ├── lspconfig.lua   # LSP configuration
 │       ├── cmp.lua         # Completion configuration
 │       ├── which-key.lua   # Key binding help system
+│       ├── gitsigns.lua    # Git integration and visual indicators
 │       └── lualine.lua     # Status line configuration
 ├── setup-roslyn.ps1        # Windows PowerShell Roslyn setup script
 ├── setup-roslyn.sh         # Linux/macOS shell Roslyn setup script
@@ -49,6 +50,7 @@ nvim/
 - **`lspconfig.lua`**: Language Server Protocol configuration for C#, HTML, CSS, and JSON
 - **`cmp.lua`**: Completion engine configuration
 - **`which-key.lua`**: Key binding help system using [which-key.nvim](https://github.com/folke/which-key.nvim)
+- **`gitsigns.lua`**: Git integration with visual indicators, staging, and blame
 - **`lualine.lua`**: Status line configuration using [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
 - **`nvim-web-devicons`**: File type icons for enhanced visual elements
 - **`mini.icons`**: Icon library for which-key and other components
@@ -70,9 +72,6 @@ nvim/
 - `<leader>fg`: Live grep
 - `<leader>fb`: Find buffers
 - `<leader>ma`: Find marks
-- `<leader>cm`: Git commits
-- `<leader>gt`: Git status
-- `<leader>pt`: Find terminals
 
 ### LSP (Language Server Protocol)
 - `gd`: Go to definition
@@ -82,6 +81,28 @@ nvim/
 - `<leader>rn`: Rename symbol
 - `<leader>ca`: Code actions
 - `<leader>f`: Format code
+
+### Git Integration (Fugitive + Gitsigns)
+- `<leader>g`: Git menu
+- `<leader>gs`: Git status (interactive staging)
+- `<leader>gc`: Git commit
+- `<leader>gp`: Git push
+- `<leader>gl`: Git pull
+- `<leader>gb`: Git blame
+- `<leader>gd`: Git diff split
+
+### Git Hunks (Gitsigns)
+- `]c` / `[c`: Navigate to next/previous git hunk
+- `<leader>hs`: Stage hunk (normal/visual mode)
+- `<leader>hr`: Reset hunk (normal/visual mode)
+- `<leader>hS`: Stage entire buffer
+- `<leader>hR`: Reset entire buffer
+- `<leader>hu`: Undo stage hunk
+- `<leader>hp`: Preview hunk
+- `<leader>hb`: Blame line (with full info)
+- `<leader>hd`: Diff this file
+- `<leader>tb`: Toggle line blame
+- `ih`: Select hunk (text object)
 
 ### C# Development (Roslyn)
 - `:Roslyn start`: Start the language server
@@ -143,7 +164,7 @@ This configuration provides comprehensive language server support for modern web
 - **Supports**: Standard HTML and ASP.NET Razor files
 
 #### CSS (.css, .scss, .sass)
-- **Language Server**: CSS Language Server  
+- **Language Server**: CSS Language Server
 - **Features**: Property completion, color preview, linting
 - **Installation**: Automatic via mason-lspconfig
 
@@ -159,6 +180,31 @@ The following language servers are automatically installed when you first open t
 - `html` - HTML Language Server
 - `cssls` - CSS Language Server
 - `jsonls` - JSON Language Server
+
+## Git Integration
+
+This configuration includes comprehensive Git support through two complementary plugins:
+
+### **Vim-Fugitive** - Complete Git Command Interface
+- **Interactive Git Status**: Run `:Git` or `:G` for a full-featured git status buffer
+- **Staging Interface**: Stage/unstage files and hunks directly from the status window
+- **Complete Git Commands**: Access any git command with `:Git <command>`
+- **Diff and Merge**: Advanced diff views and 3-way merge resolution
+- **Git History**: Browse commits, branches, and file history
+
+### **Gitsigns** - Visual Git Integration
+- **Gutter Signs**: Visual indicators for added, modified, and deleted lines
+- **Hunk Operations**: Stage, reset, and navigate individual code changes
+- **Live Blame**: See git blame information inline or on-demand
+- **Preview Changes**: View diffs without leaving your buffer
+- **Stage Selection**: Stage specific lines or visual selections
+
+### Git Workflow Features
+- **Real-time Updates**: Git status updates automatically as you work
+- **Conflict Resolution**: Visual merge conflict resolution tools
+- **Branch Management**: Switch branches, create branches, view git log
+- **Staging Granularity**: Stage entire files, hunks, or individual lines
+- **Blame Integration**: See who changed what and when, with full commit info
 
 ## C# Development Setup
 
@@ -202,4 +248,3 @@ chmod +x setup-roslyn.sh
 - **Inlay Hints**: Type hints and parameter names
 - **Code Lens**: References and test indicators
 - **Formatting**: Automatic code formatting
-

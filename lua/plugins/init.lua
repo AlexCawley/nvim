@@ -79,6 +79,14 @@ return packer.startup(function(use)
          config = require('plugins.which-key')
      }
 
+    -- Git integration
+    use 'tpope/vim-fugitive'
+    
+    use {
+        'lewis6991/gitsigns.nvim',
+        config = require('plugins.gitsigns')
+    }
+
     -- Lualine (status line)
     use {
         'nvim-lualine/lualine.nvim',

@@ -13,7 +13,4 @@ return function()
     vim.keymap.set('n', '<leader>fg', require('telescope.builtin').live_grep)
     vim.keymap.set('n', '<leader>fb', require('telescope.builtin').buffers)
     vim.keymap.set('n', '<leader>ma', require('telescope.builtin').marks)
-    vim.keymap.set('n', '<leader>cm', '<cmd>Telescope git_commits<CR>')
-    vim.keymap.set('n', '<leader>gt', '<cmd>Telescope git_status<CR>')
-    vim.keymap.set('n', '<leader>pt', '<cmd>Telescope terms<CR>')
 end
