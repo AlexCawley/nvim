@@ -94,9 +94,55 @@ function M.install_external_formatters()
     )
 end
 
+-- Install ripgrep for telescope
+function M.install_ripgrep()
+    local os = get_os()
+
+    vim.notify("Installing ripgrep for " .. os .. "...", vim.log.levels.INFO)
+
+    if os == "windows" then
+        -- Windows installation using chocolatey
+        vim.notify("Installing ripgrep via chocolatey...", vim.log.levels.INFO)
+        if command_exists "choco" then
+            vim.fn.system "choco install ripgrep -y"
+        else
+            vim.notify(
+                "Chocolatey not found. Please install chocolatey first or install ripgrep manually",
+                vim.log.levels.WARN
+            )
+        end
+    elseif os == "linux" then
+        -- Linux installation using apt
+        vim.notify("Installing ripgrep via apt...", vim.log.levels.INFO)
+        if command_exists "apt" then
+            vim.fn.system "sudo apt update && sudo apt install -y ripgrep"
+        else
+            vim.notify("apt not found. Please install ripgrep manually for your distribution", vim.log.levels.WARN)
+        end
+    elseif os == "macos" then
+        -- macOS installation using homebrew
+        vim.notify("Installing ripgrep via homebrew...", vim.log.levels.INFO)
+        if command_exists "brew" then
+            vim.fn.system "brew install ripgrep"
+        else
+            vim.notify(
+                "Homebrew not found. Please install homebrew first or install ripgrep manually",
+                vim.log.levels.WARN
+            )
+        end
+    end
+
+    vim.notify("Ripgrep installation complete!", vim.log.levels.INFO)
+    vim.notify("Ripgrep is now available for telescope live_grep functionality", vim.log.levels.INFO)
+end
+
 -- Create user commands
 vim.api.nvim_create_user_command("InstallFormatters", M.install_external_formatters, {
     desc = "Install external formatters not available via Mason",
+})
+
+vim.api.nvim_create_user_command("InstallRipgrep", M.install_ripgrep, {
+    desc = "Install ripgrep for telescope functionality",
 })
 
 return M

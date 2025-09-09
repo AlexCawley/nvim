@@ -8,7 +8,13 @@
       "WebFetch(domain:github.com)",
       "Bash(ls:*)",
       "Read(//c/Users/alexc/AppData/Local/nvim-data/**)",
-      "Read(//c/Users/e4977/AppData/Local/nvim-data/site/pack/packer/start/**)"
+      "Read(//c/Users/e4977/AppData/Local/nvim-data/site/pack/packer/start/**)",
+      "Bash(where rg)",
+      "Bash(Get-Command rg -ErrorAction SilentlyContinue)",
+      "Bash(echo $PATH)",
+      "Read(//c/ProgramData/chocolatey/bin/**)",
+      "Bash(choco install:*)",
+      "Bash(where choco)"
     ],
     "deny": [],
     "ask": []

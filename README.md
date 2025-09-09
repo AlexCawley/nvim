@@ -73,9 +73,9 @@ nvim/
 - `<C-x>`: Exit terminal mode
 
 ### Telescope (Fuzzy Finder)
-- `<leader>Ff`: Find files
-- `<leader>Fg`: Live grep
-- `<leader>Fb`: Find buffers
+- `<leader>ff`: Find files
+- `<leader>fg`: Live grep 
+- `<leader>fb`: Find buffers
 - `<leader>ma`: Find marks
 
 ### Code Formatting (Conform.nvim)
