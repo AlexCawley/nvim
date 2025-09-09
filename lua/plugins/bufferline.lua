@@ -5,7 +5,6 @@ return function()
         options = {
             mode = "buffers",
             style_preset = {
-                bufferline.style_preset.minimal,
                 bufferline.style_preset.no_italic,
                 bufferline.style_preset.no_bold
             },
@@ -21,7 +20,8 @@ return function()
         }
     }
 
-    vim.keymap.set('n', '<leader>blp', ':BufferLinePick<CR>')
+    vim.keymap.set('n', '<leader>bp', ':BufferLinePick<CR>')
     vim.keymap.set('n', '<tab>', ':BufferLineCycleNext<CR>')
     vim.keymap.set('n', '<S-tab>', ':BufferLineCyclePrev<CR>')
+    vim.keymap.set('n', '<leader>x', ':BufferLinePickClose<CR>')
 end

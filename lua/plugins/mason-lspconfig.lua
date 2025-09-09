@@ -5,6 +5,7 @@ return function()
             'cssls',
             'jsonls',
             'lua_ls',
+            'terraformls',
         },
 
         automatic_installation = true,

@@ -130,9 +130,10 @@ nvim/
 - `:Roslyn target`: Choose solution if multiple exist
 
 ### Bufferline
-- `<leader>blp`: Jump to a specific buffer with one keystroke
+- `<leader>bp`: Jump to a specific buffer with one keystroke
 - `<tab>`: Cycle to the next buffer
 - `<S-tab>`: Cycle to the previous buffer
+- `<leader>x`: Close a buffer (interactive picker)
 
 ### Which-Key Help System
 - **Automatic**: Press any key combination to see available mappings
@@ -198,12 +199,19 @@ This configuration provides comprehensive language server support for modern web
 - **Installation**: Automatic via mason-lspconfig
 - **Enhanced**: Includes schemas for package.json, tsconfig.json, and more
 
+#### HCL/Terraform (.tf, .tfvars)
+- **Language Server**: Terraform Language Server
+- **Features**: Syntax highlighting, auto-completion, validation, formatting
+- **Installation**: Automatic via mason-lspconfig
+- **Supports**: Terraform configuration files and variable definitions
+
 ### Automatic Installation
 
 The following language servers are automatically installed when you first open the relevant file types:
 - `html` - HTML Language Server
 - `cssls` - CSS Language Server
 - `jsonls` - JSON Language Server
+- `terraformls` - Terraform Language Server
 
 ## Git Integration
 

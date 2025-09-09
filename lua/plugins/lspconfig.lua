@@ -33,7 +33,7 @@ return function()
 
     local on_attach = function(client, bufnr)
         -- Enable inlay hints
-        vim.lsp.inlay_hint.enable(bufnr, true)
+        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 
         -- Key mappings for diagnostics
         local opts = { noremap = true, silent = true, buffer = bufnr }
@@ -119,5 +119,12 @@ return function()
                 },
             },
         },
+    }
+
+    -- Terraform Language Server
+    lspconfig.terraformls.setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
+        filetypes = { "terraform", "terraform-vars" },
     }
 end
