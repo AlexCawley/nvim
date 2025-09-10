@@ -50,6 +50,7 @@ return function()
         { '<leader>nd', '<cmd>lua vim.diagnostic.goto_next()<cr>', desc = 'Next Diagnostic' },
         { '<leader>pd', '<cmd>lua vim.diagnostic.goto_prev()<cr>', desc = 'Previous Diagnostic' },
         { '<leader>x', ':BufferLinePickClose<CR>', desc = 'Close current buffer' },
+        { '<C-w>', '<cmd>bprevious | bdelete #<cr>', desc = 'Close Buffer (Keep Window)' },
         { 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', desc = 'Hover Information' },
         { 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', desc = 'Go to Declaration' },
         { 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', desc = 'Go to Definition' },

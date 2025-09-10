@@ -134,6 +134,7 @@ nvim/
 - `<tab>`: Cycle to the next buffer
 - `<S-tab>`: Cycle to the previous buffer
 - `<leader>x`: Close a buffer (interactive picker)
+- `<C-w>`: Close current buffer (keeps window open)
 
 ### Which-Key Help System
 - **Automatic**: Press any key combination to see available mappings
