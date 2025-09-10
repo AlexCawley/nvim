@@ -93,7 +93,7 @@ nvim/
 - `gr`: Go to references
 - `K`: Show hover information
 - `<leader>rn`: Rename symbol
-- `<leader>ca`: Code actions
+- `<leader>ca`: Code actions (auto-import, quick fixes, refactoring suggestions)
 
 ### LSP Diagnostics
 - `<leader>d`: Show line diagnostics in floating window

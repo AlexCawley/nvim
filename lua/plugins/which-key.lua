@@ -28,6 +28,7 @@ return function()
         { '<C-l>', '<C-w>l', desc = 'Go to Right Window' },
         { '<C-n>', '<cmd>NvimTreeToggle<cr>', desc = 'Toggle File Tree' },
         { '<leader>bl', ':BufferLinePick<CR>', desc = "Pick a buffer" },
+        { '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', desc = 'Code Actions', mode = { 'n', 'v' } },
         { '<leader>d', '<cmd>lua vim.diagnostic.open_float()<cr>', desc = 'Show Line Diagnostics' },
         { '<leader>e', '<cmd>NvimTreeFocus<cr>', desc = 'Focus File Tree' },
         { '<leader>fm', function() require('conform').format({ lsp_fallback = true }) end, desc = 'Format File/Selection', mode = { 'n', 'v' } },

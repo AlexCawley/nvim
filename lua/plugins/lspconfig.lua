@@ -40,6 +40,10 @@ return function()
         vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
         vim.keymap.set("n", "<leader>pd", vim.diagnostic.goto_prev, opts)
         vim.keymap.set("n", "<leader>nd", vim.diagnostic.goto_next, opts)
+        
+        -- Code actions (like auto-import suggestions)
+        vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+        vim.keymap.set("v", "<leader>ca", vim.lsp.buf.code_action, opts)
     end
 
     -- Setup Roslyn for C# development using Mason
