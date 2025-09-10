@@ -30,6 +30,13 @@ vim.opt.splitright = true
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undofile = false
+vim.opt.autoread = true
+
+-- Auto-reload files when changed externally
+vim.api.nvim_create_autocmd({"FocusGained", "BufEnter", "CursorHold", "CursorHoldI"}, {
+    pattern = "*",
+    command = "if mode() != 'c' | checktime | endif",
+})
 
 -- Disable intro screen
 vim.opt.shortmess:append("I")
