@@ -13,7 +13,10 @@ nvim/
 │   │   ├── options.lua         # Vim options and settings
 │   │   └── keymaps.lua         # Basic key mappings
 │   ├── setup/                  # Cross-platform setup utilities
-│   │   └── init.lua            # Setup commands and utilities
+│   │   ├── init.lua            # Main setup coordinator and SetupDevEnv command
+│   │   ├── formatters.lua      # External formatter installation (astyle, stylelint)
+│   │   ├── ripgrep.lua         # Ripgrep installation for Telescope
+│   │   └── easy-dotnet.lua     # EasyDotnet tool and jq installation
 │   └── plugins/                # Plugin configurations
 │       ├── init.lua            # Plugin manager and main plugin loader
 │       ├── telescope.lua       # Telescope fuzzy finder configuration
@@ -25,7 +28,7 @@ nvim/
 │       ├── which-key.lua       # Key binding help system
 │       ├── gitsigns.lua        # Git integration and visual indicators
 │       ├── bufferline.lua      # Buffers as tabs setup
-│       ├── easy-dotnet.lua     # C# ASP.NET configuration
+│       ├── easy-dotnet.lua     # .NET development tools configuration
 │       └── lualine.lua         # Status line configuration
 └── plugin/                     # Packer compiled files (auto-generated)
     └── packer_compiled.lua
@@ -41,7 +44,10 @@ nvim/
 
 ### Setup Utilities (`lua/setup/`)
 
-- **`init.lua`**: Cross-platform installation utilities and setup commands
+- **`init.lua`**: Main setup coordinator with `:SetupDevEnv` command that runs all setup modules
+- **`formatters.lua`**: Cross-platform installation of external formatters (astyle, stylelint)
+- **`ripgrep.lua`**: Cross-platform installation of ripgrep for Telescope functionality
+- **`easy-dotnet.lua`**: Cross-platform installation of EasyDotnet tool and jq for .NET development
 
 ### Plugin Configuration (`lua/plugins/`)
 
