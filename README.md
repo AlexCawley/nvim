@@ -25,6 +25,7 @@ nvim/
 │       ├── which-key.lua       # Key binding help system
 │       ├── gitsigns.lua        # Git integration and visual indicators
 │       ├── bufferline.lua      # Buffers as tabs setup
+│       ├── easy-dotnet.lua     # C# ASP.NET configuration
 │       └── lualine.lua         # Status line configuration
 └── plugin/                     # Packer compiled files (auto-generated)
     └── packer_compiled.lua
@@ -44,21 +45,22 @@ nvim/
 
 ### Plugin Configuration (`lua/plugins/`)
 
-- **`init.lua`**: Main plugin configuration using packer.nvim
-- **`telescope.lua`**: Telescope fuzzy finder setup and key mappings
-- **`nvim-tree.lua`**: File tree explorer configuration
-- **`mason.lua`**: Mason LSP installer configuration
-- **`mason-lspconfig.lua`**: Automatic installation of HTML, CSS, and JSON language servers
-- **`mason-tool-installer.lua`**: Automatic installation of formatters and tools
-- **`lspconfig.lua`**: Language Server Protocol configuration for C#, HTML, CSS, and JSON
-- **`cmp.lua`**: Completion engine configuration
+- **`init.lua`**: Main plugin configuration using [packer.nvim](https://github.com/wbthomason/packer.nvim)
+- **`telescope.lua`**: [Telescope](https://github.com/nvim-telescope/telescope.nvim) fuzzy finder setup and key mappings
+- **`nvim-tree.lua`**: [nvim-tree](https://github.com/nvim-tree/nvim-tree.lua) file tree explorer configuration
+- **`mason.lua`**: [Mason](https://github.com/williamboman/mason.nvim) LSP installer configuration
+- **`mason-lspconfig.lua`**: [mason-lspconfig](https://github.com/williamboman/mason-lspconfig.nvim) automatic installation of HTML, CSS, and JSON language servers
+- **`mason-tool-installer.lua`**: [mason-tool-installer](https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim) automatic installation of formatters and tools
+- **`lspconfig.lua`**: [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) Language Server Protocol configuration for C#, HTML, CSS, and JSON
+- **`cmp.lua`**: [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) completion engine configuration
 - **`which-key.lua`**: Key binding help system using [which-key.nvim](https://github.com/folke/which-key.nvim)
-- **`gitsigns.lua`**: Git integration with visual indicators, staging, and blame
+- **`gitsigns.lua`**: [Gitsigns](https://github.com/lewis6991/gitsigns.nvim) git integration with visual indicators, staging, and blame
 - **`lualine.lua`**: Status line configuration using [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
-- **`nvim-web-devicons`**: File type icons for enhanced visual elements
-- **`mini.icons`**: Icon library for which-key and other components
-- **`bufferline.lua`**: Buffers as tabs
+- **`nvim-web-devicons`**: [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons) file type icons for enhanced visual elements
+- **`mini.icons`**: [mini.icons](https://github.com/echasnovski/mini.icons) icon library for which-key and other components
+- **`bufferline.lua`**: [Bufferline](https://github.com/akinsho/bufferline.nvim) buffers as tabs
 - **`conform.lua`**: Code formatting using [conform.nvim](https://github.com/stevearc/conform.nvim)
+- **`easy-dotnet.lua`**: .NET development tools using [easy-dotnet.nvim](https://github.com/GustavEikaas/easy-dotnet.nvim)
 
 ## Key Mappings
 
@@ -96,9 +98,20 @@ nvim/
 - `<leader>ca`: Code actions (auto-import, quick fixes, refactoring suggestions)
 
 ### LSP Diagnostics
-- `<leader>d`: Show line diagnostics in floating window
+- `<leader>ld`: Show line diagnostics in floating window
 - `<leader>nd`: Go to next diagnostic
 - `<leader>pd`: Go to previous diagnostic
+
+### .NET Development (Easy-Dotnet)
+- `<leader>d`: .NET menu
+- `<leader>da`: Add package/project to solution
+- `<leader>db`: Build current project
+- `<leader>dc`: Clean current project
+- `<leader>dre`: Restore NuGet packages
+- `<leader>drn`: Run current project
+- `<leader>ds`: Manage user secrets
+- `<leader>dtr`: Open test runner interface
+- `<leader>dts`: Run all tests in solution
 
 ### Git Integration (Fugitive + Gitsigns)
 - `<leader>g`: Git menu
@@ -179,7 +192,7 @@ This configuration provides comprehensive language server support for modern web
 ### Supported Languages
 
 #### C# (.cs, .csproj, .sln)
-- **Language Server**: Roslyn (via roslyn.nvim)
+- **Language Server**: Roslyn (via [roslyn.nvim](https://github.com/seblyng/roslyn.nvim))
 - **Features**: IntelliSense, code navigation, refactoring, inlay hints, code lens
 - **Installation**: Manual via `:SetupRoslyn` command
 
@@ -195,7 +208,7 @@ This configuration provides comprehensive language server support for modern web
 - **Installation**: Automatic via mason-lspconfig
 
 #### JSON (.json)
-- **Language Server**: JSON Language Server with SchemaStore
+- **Language Server**: JSON Language Server with [SchemaStore](https://github.com/b0o/schemastore.nvim)
 - **Features**: Schema validation, auto-completion, error detection
 - **Installation**: Automatic via mason-lspconfig
 - **Enhanced**: Includes schemas for package.json, tsconfig.json, and more
@@ -218,14 +231,14 @@ The following language servers are automatically installed when you first open t
 
 This configuration includes comprehensive Git support through two complementary plugins:
 
-### **Vim-Fugitive** - Complete Git Command Interface
+### **[Vim-Fugitive](https://github.com/tpope/vim-fugitive)** - Complete Git Command Interface
 - **Interactive Git Status**: Run `:Git` or `:G` for a full-featured git status buffer
 - **Staging Interface**: Stage/unstage files and hunks directly from the status window
 - **Complete Git Commands**: Access any git command with `:Git <command>`
 - **Diff and Merge**: Advanced diff views and 3-way merge resolution
 - **Git History**: Browse commits, branches, and file history
 
-### **Gitsigns** - Visual Git Integration
+### **[Gitsigns](https://github.com/lewis6991/gitsigns.nvim)** - Visual Git Integration
 - **Gutter Signs**: Visual indicators for added, modified, and deleted lines
 - **Hunk Operations**: Stage, reset, and navigate individual code changes
 - **Live Blame**: See git blame information inline or on-demand
@@ -243,7 +256,7 @@ This configuration includes comprehensive Git support through two complementary 
 
 ### Automatic Installation (via Mason)
 
-Most formatters are automatically installed via **mason-tool-installer.nvim**:
+Most formatters are automatically installed via **[mason-tool-installer.nvim](https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim)**:
 
 - **stylua** (Lua formatter)
 - **fixjson** (JSON formatter) 
@@ -256,14 +269,24 @@ These will be installed automatically when you run `:PackerSync` and restart Neo
 Some formatters need manual installation as they're not available in the Mason registry:
 
 #### Option 1: Automatic Installation (Recommended)
-Use the built-in Neovim command:
+Use the single command to setup everything:
 ```vim
-:InstallFormatters
+:SetupDevEnv
 ```
 
-This command will automatically detect your operating system and install:
+Or run individual setup commands:
+```vim
+:InstallFormatters
+:SetupEasyDotnet
+:InstallRipgrep
+```
+
+These commands will automatically detect your operating system and install:
 - **astyle** (C# formatter) via chocolatey/homebrew/apt
 - **stylelint** (CSS formatter) via npm
+- **EasyDotnet** (global .NET tool) via dotnet CLI
+- **jq** (JSON processor) via chocolatey/homebrew/apt
+- **ripgrep** (fast search tool for Telescope) via chocolatey/homebrew/apt
 
 #### Option 2: Manual Installation
 ```bash
@@ -277,12 +300,31 @@ sudo apt install astyle
 
 # CSS formatting (stylelint)
 npm install -g stylelint
+
+# .NET development tools
+dotnet tool install -g EasyDotnet
+
+# JSON processor (jq)
+# Windows (via chocolatey):
+choco install jq
+# macOS (via homebrew):
+brew install jq
+# Linux (Ubuntu/Debian):
+sudo apt install jq
+
+# Fast search tool (ripgrep)
+# Windows (via chocolatey):
+choco install ripgrep
+# macOS (via homebrew):
+brew install ripgrep
+# Linux (Ubuntu/Debian):
+sudo apt install ripgrep
 ```
 
 **Prerequisites**: Make sure you have the appropriate package managers installed:
-- **Windows**: Chocolatey and Node.js/npm
-- **macOS**: Homebrew and Node.js/npm  
-- **Linux**: apt (Ubuntu/Debian) and Node.js/npm
+- **Windows**: Chocolatey, Node.js/npm, and .NET SDK
+- **macOS**: Homebrew, Node.js/npm, and .NET SDK
+- **Linux**: apt (Ubuntu/Debian), Node.js/npm, and .NET SDK
 
 **Note**: `trim_whitespace` is built into conform.nvim and requires no external installation.
 
@@ -298,8 +340,8 @@ This configuration includes support for C# development using the [roslyn.nvim](h
 
 #### Option 1: Automatic Setup (Recommended)
 1. **Install plugins**: Restart Neovim and run `:PackerSync`
-2. **Setup Roslyn**: Run `:SetupRoslyn` in Neovim
-3. **Start Roslyn server**: Open a C# project and run `:Roslyn start`
+2. **Setup development environment**: Run `:SetupDevEnv` in Neovim (installs all tools including EasyDotnet)
+3. **Start Roslyn server** (if using): Open a C# project and run `:Roslyn start`
 4. **Select solution** (if multiple): Run `:Roslyn target` to choose the correct solution
 
 ### Features

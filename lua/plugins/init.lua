@@ -149,4 +149,11 @@ return packer.startup(function(use)
         'stevearc/conform.nvim',
         config = require('plugins.conform')
     }
+
+    -- Easy .NET development
+    use {
+        'GustavEikaas/easy-dotnet.nvim',
+        requires = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim' },
+        config = require('plugins.easy-dotnet')
+    }
 end)

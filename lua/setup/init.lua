@@ -136,6 +136,69 @@ function M.install_ripgrep()
     vim.notify("Ripgrep is now available for telescope live_grep functionality", vim.log.levels.INFO)
 end
 
+-- Install EasyDotnet and jq for easy-dotnet.nvim plugin
+function M.setup_easy_dotnet()
+    local os = get_os()
+
+    vim.notify("Setting up EasyDotnet dependencies for " .. os .. "...", vim.log.levels.INFO)
+
+    -- Install EasyDotnet tool globally
+    vim.notify("Installing EasyDotnet tool globally...", vim.log.levels.INFO)
+    if command_exists "dotnet" then
+        vim.fn.system "dotnet tool install -g EasyDotnet"
+    else
+        vim.notify("dotnet CLI not found. Please install .NET SDK first", vim.log.levels.ERROR)
+        return
+    end
+
+    -- Install jq based on operating system
+    if os == "windows" then
+        vim.notify("Installing jq via chocolatey...", vim.log.levels.INFO)
+        if command_exists "choco" then
+            vim.fn.system "choco install jq -y"
+        else
+            vim.notify(
+                "Chocolatey not found. Please install chocolatey first or install jq manually",
+                vim.log.levels.WARN
+            )
+        end
+    elseif os == "linux" then
+        vim.notify("Installing jq via apt...", vim.log.levels.INFO)
+        if command_exists "apt" then
+            vim.fn.system "sudo apt update && sudo apt install -y jq"
+        else
+            vim.notify("apt not found. Please install jq manually for your distribution", vim.log.levels.WARN)
+        end
+    elseif os == "macos" then
+        vim.notify("Installing jq via homebrew...", vim.log.levels.INFO)
+        if command_exists "brew" then
+            vim.fn.system "brew install jq"
+        else
+            vim.notify(
+                "Homebrew not found. Please install homebrew first or install jq manually",
+                vim.log.levels.WARN
+            )
+        end
+    end
+
+    vim.notify("EasyDotnet setup complete!", vim.log.levels.INFO)
+    vim.notify("You can now use the easy-dotnet.nvim plugin", vim.log.levels.INFO)
+end
+
+-- Setup complete development environment
+function M.setup_dev_env()
+    vim.notify("Setting up complete development environment...", vim.log.levels.INFO)
+    vim.notify("This will install formatters, ripgrep, and .NET tools", vim.log.levels.INFO)
+    
+    -- Run all setup functions
+    M.install_external_formatters()
+    M.install_ripgrep()
+    M.setup_easy_dotnet()
+    
+    vim.notify("Development environment setup complete!", vim.log.levels.INFO)
+    vim.notify("All tools have been installed and configured", vim.log.levels.INFO)
+end
+
 -- Create user commands
 vim.api.nvim_create_user_command("InstallFormatters", M.install_external_formatters, {
     desc = "Install external formatters not available via Mason",
@@ -143,6 +206,14 @@ vim.api.nvim_create_user_command("InstallFormatters", M.install_external_formatt
 
 vim.api.nvim_create_user_command("InstallRipgrep", M.install_ripgrep, {
     desc = "Install ripgrep for telescope functionality",
+})
+
+vim.api.nvim_create_user_command("SetupEasyDotnet", M.setup_easy_dotnet, {
+    desc = "Install EasyDotnet tool and jq for easy-dotnet.nvim plugin",
+})
+
+vim.api.nvim_create_user_command("SetupDevEnv", M.setup_dev_env, {
+    desc = "Setup complete development environment (runs all setup commands)",
 })
 
 return M
