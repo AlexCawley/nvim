@@ -7,7 +7,6 @@ local M = {}
 local formatters = require('setup.formatters')
 local ripgrep = require('setup.ripgrep')
 local easy_dotnet = require('setup.easy-dotnet')
-local debugger = require('setup.debugger')
 
 -- Setup complete development environment
 function M.setup_dev_env()
